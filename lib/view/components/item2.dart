@@ -1,9 +1,11 @@
 import 'package:crypto_api_flutter/view/selectCoin.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Item2 extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   var item;
-  Item2({this.item});
+  Item2({super.key, this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,11 @@ class Item2 extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (contest) => SelectCoin(selectItem: item,)));
+              context,
+              MaterialPageRoute(
+                  builder: (contest) => SelectCoin(
+                        selectItem: item,
+                      )));
         },
         child: Container(
           padding: EdgeInsets.only(
@@ -37,7 +43,8 @@ class Item2 extends StatelessWidget {
               ),
               Text(
                 item.id,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: myHeight * 0.01,
@@ -46,13 +53,15 @@ class Item2 extends StatelessWidget {
                 children: [
                   Text(
                     item.priceChange24H.toString().contains('-')
+                        // ignore: prefer_interpolation_to_compose_strings
                         ? "-\$" +
                             item.priceChange24H
                                 .toStringAsFixed(2)
                                 .toString()
                                 .replaceAll('-', '')
+                        // ignore: prefer_interpolation_to_compose_strings
                         : "\$" + item.priceChange24H.toStringAsFixed(2),
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.normal,
                         color: Colors.grey),

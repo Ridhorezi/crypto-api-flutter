@@ -1,9 +1,13 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings
+
 import 'package:chart_sparkline/chart_sparkline.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Item extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   var item;
-  Item({this.item});
+  Item({super.key, this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +15,14 @@ class Item extends StatelessWidget {
     double myWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: myWidth * 0.06, vertical: myHeight * 0.02),
+          horizontal: myWidth * 0.06, vertical: myHeight * 0.015),
+      // ignore: avoid_unnecessary_containers
       child: Container(
         child: Row(
           children: [
             Expanded(
               flex: 1,
+              // ignore: sized_box_for_whitespace
               child: Container(
                   height: myHeight * 0.05, child: Image.network(item.image)),
             ),
@@ -30,11 +36,11 @@ class Item extends StatelessWidget {
                 children: [
                   Text(
                     item.id,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     '0.4 ' + item.symbol,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.normal,
                         color: Colors.grey),
@@ -47,6 +53,7 @@ class Item extends StatelessWidget {
             ),
             Expanded(
               flex: 2,
+              // ignore: sized_box_for_whitespace
               child: Container(
                 height: myHeight * 0.05,
                 // width: myWidth * 0.2,
@@ -76,26 +83,25 @@ class Item extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '\$ ' + item.currentPrice.toString(),
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    '\$ ${item.currentPrice}',
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Row(
                     children: [
                       Text(
                         item.priceChange24H.toString().contains('')
-                            ? "-\$" +
-                                item.priceChange24H
-                                    .toStringAsFixed(0)
+                            ? "-\$${item.priceChange24H
+                                    .toStringAsFixed(1)
                                     .toString()
-                                    .replaceAll('-', '')
+                                    .replaceAll('-', '')}"
                             : "\$" + item.priceChange24H.toStringAsFixed(0),
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.normal,
                             color: Colors.grey),
                       ),
                       SizedBox(
-                        width: myWidth * 0.04,
+                        width: myWidth * 0.02,
                       ),
                       Text(
                         item.marketCapChangePercentage24H.toStringAsFixed(0) +

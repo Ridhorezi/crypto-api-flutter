@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:crypto_api_flutter/model/coinModel.dart';
 import 'package:crypto_api_flutter/view/components/item.dart';
 import 'package:crypto_api_flutter/view/components/item2.dart';
@@ -26,7 +28,7 @@ class _HomeState extends State<Home> {
       body: Container(
         height: myHeight,
         width: myWidth,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -51,16 +53,16 @@ class _HomeState extends State<Home> {
                       decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(5)),
-                      child: Text(
+                      child: const Text(
                         'Main portfolio',
                         style: TextStyle(fontSize: 18),
                       ),
                     ),
-                    Text(
+                    const Text(
                       'Top 10 coins',
                       style: TextStyle(fontSize: 18),
                     ),
-                    Text(
+                    const Text(
                       'Exprimental',
                       style: TextStyle(fontSize: 18),
                     ),
@@ -72,7 +74,7 @@ class _HomeState extends State<Home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       '\$ 7,466.20',
                       style: TextStyle(fontSize: 35),
                     ),
@@ -93,7 +95,7 @@ class _HomeState extends State<Home> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: myWidth * 0.07),
                 child: Row(
-                  children: [
+                  children: const [
                     Text(
                       '+162% all time',
                       style: TextStyle(fontSize: 16),
@@ -113,10 +115,10 @@ class _HomeState extends State<Home> {
                           blurRadius: 5,
                           color: Colors.grey.shade300,
                           spreadRadius: 3,
-                          offset: Offset(0, 3))
+                          offset: const Offset(0, 3))
                     ],
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(50),
                       topRight: Radius.circular(50),
                     )),
@@ -129,7 +131,7 @@ class _HomeState extends State<Home> {
                       padding: EdgeInsets.symmetric(horizontal: myWidth * 0.08),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Text(
                             'Assets',
                             style: TextStyle(fontSize: 20),
@@ -141,18 +143,20 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: myHeight * 0.02,
                     ),
+                    // ignore: sized_box_for_whitespace
                     Container(
                       height: myHeight * 0.36,
                       child: isRefreshing == true
-                          ? Center(
+                          ? const Center(
                               child: CircularProgressIndicator(
                                 color: Color(0xffFBC700),
                               ),
                             )
+                          // ignore: prefer_is_empty
                           : coinMarket == null || coinMarket!.length == 0
                               ? Padding(
                                   padding: EdgeInsets.all(myHeight * 0.06),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       'Attention this Api is free, so you cannot send multiple requests per second, please wait and try again later.',
                                       style: TextStyle(fontSize: 18),
@@ -162,7 +166,7 @@ class _HomeState extends State<Home> {
                               : ListView.builder(
                                   itemCount: 4,
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemBuilder: (context, index) {
                                     return Item(
                                       item: coinMarket![index],
@@ -176,7 +180,7 @@ class _HomeState extends State<Home> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: myWidth * 0.05),
                       child: Row(
-                        children: [
+                        children: const [
                           Text(
                             'Recommend to Buy',
                             style: TextStyle(
@@ -192,15 +196,16 @@ class _HomeState extends State<Home> {
                       child: Padding(
                         padding: EdgeInsets.only(left: myWidth * 0.03),
                         child: isRefreshing == true
-                            ? Center(
+                            ? const Center(
                                 child: CircularProgressIndicator(
                                   color: Color(0xffFBC700),
                                 ),
                               )
+                            // ignore: prefer_is_empty
                             : coinMarket == null || coinMarket!.length == 0
                                 ? Padding(
                                     padding: EdgeInsets.all(myHeight * 0.06),
-                                    child: Center(
+                                    child: const Center(
                                       child: Text(
                                         'Attention this Api is free, so you cannot send multiple requests per second, please wait and try again later.',
                                         style: TextStyle(fontSize: 18),
@@ -234,7 +239,9 @@ class _HomeState extends State<Home> {
   bool isRefreshing = true;
 
   List? coinMarket = [];
+  // ignore: prefer_typing_uninitialized_variables
   var coinMarketList;
+  // ignore: body_might_complete_normally_nullable
   Future<List<CoinModel>?> getCoinMarket() async {
     const url =
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&sparkline=true';

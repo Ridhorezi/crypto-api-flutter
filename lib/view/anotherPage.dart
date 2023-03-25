@@ -10,7 +10,7 @@ class AnotherPage extends StatefulWidget {
 class _AnotherPageState extends State<AnotherPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text('Another Page'),
       ),

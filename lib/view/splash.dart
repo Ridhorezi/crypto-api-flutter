@@ -16,6 +16,7 @@ class _SplashState extends State<Splash> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
+        // ignore: sized_box_for_whitespace
         body: Container(
           height: myHeight,
           width: myWidth,

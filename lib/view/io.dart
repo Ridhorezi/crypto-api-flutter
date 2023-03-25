@@ -13,10 +13,10 @@ class _IOState extends State<IO> {
   @override
   void initState() {
     Timer(
-      Duration(seconds: 4),
+      const Duration(seconds: 4),
       () {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Splash()));
+            context, MaterialPageRoute(builder: (context) => const Splash()));
       },
     );
     super.initState();
@@ -28,7 +28,8 @@ class _IOState extends State<IO> {
     double myWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xffFBC700),
+        backgroundColor: const Color(0xffFBC700),
+        // ignore: sized_box_for_whitespace
         body: Container(
           height: myHeight,
           width: myWidth,
@@ -38,8 +39,8 @@ class _IOState extends State<IO> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(''),
-                Text(
+                const Text(''),
+                const Text(
                   'IO Crypto',
                   style: TextStyle(
                       fontSize: 60,
@@ -52,7 +53,7 @@ class _IOState extends State<IO> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text(
+                        const Text(
                           'Creat by',
                           style: TextStyle(
                               fontSize: 20,
