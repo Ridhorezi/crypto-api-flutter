@@ -1,6 +1,6 @@
 # crypto_api_flutter
 
-A new Flutter project.
+Tracker market crypto menggunakan api coin gecko.
 
 ## Getting Started
 
